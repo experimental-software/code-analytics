@@ -36,12 +36,11 @@ Show help:
 java -jar ~/bin/code-maat.jar --help
 ```
 
-Find the main developer of files:
-```
-java -jar ~/bin/code-maat.jar --log /tmp/gitlog.txt -c git2 -a refactoring-main-dev | grep $DEVELOPER_NAME
-```
-
 ### Available analysis options
+
+```
+java -jar ~/bin/code-maat.jar --log /tmp/gitlog.txt --version-control git2 --analysis ${ANALYSIS_NAME}
+```
 
 | Analysis | Description |
 |--------|-------------|
