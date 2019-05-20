@@ -62,7 +62,7 @@ java -jar ~/bin/code-maat.jar --log /tmp/gitlog.txt -c git2 -a refactoring-main-
 | refactoring-main-dev | entity,main-dev,removed,total-removed,ownership |
 | revisions | entity,n-revs |
 | soc | Sum of coupling |
-| summary | statistic,value |
+| summary | Count the number of commits, entities, entities changed, and authors |
 
 ## References
 
