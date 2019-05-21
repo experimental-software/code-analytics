@@ -51,7 +51,7 @@ ccsh merge /tmp/codemaat_revisions.json /tmp/sonar.json > /tmp/merged.json
 
 Run visualization service:
 ```
-docker run -p 80:8080 maibornwolff/codecharta-visualization
+codecharta-visualization
 ```
 
 
