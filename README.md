@@ -6,6 +6,31 @@
 
 
 
+## Sonar
+
+```
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+cd $REPO
+./gradlew sonarqube -Dsonar.host.url=http://localhost:9000
+```
+
+### API
+
+List all available projects:
+```
+http GET http://localhost:9000/api/components/search?qualifiers=TRK
+```
+
+### Adding custom measures
+
+- https://docs.sonarqube.org/latest/instance-administration/custom-measures/
+- https://stackoverflow.com/questions/34099200/is-there-a-way-to-add-additional-code-metrics-in-sonarqube-without-having-to-wri/34135183
+- https://stackoverflow.com/questions/11731155/how-to-customize-metrics-in-sonar
+- https://jira.sonarsource.com/browse/SONAR-11184
+
+## Code charta
+- https://github.com/MaibornWolff/codecharta/blob/master/README.md#download
+
 
 ## Code Maat
 
