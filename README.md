@@ -31,6 +31,29 @@ http GET http://localhost:9000/api/components/search?qualifiers=TRK
 ## Code charta
 - https://github.com/MaibornWolff/codecharta/blob/master/README.md#download
 
+Create JSON file from a Sonarcube project:
+```
+ccsh sonarimport http://localhost:9000 $PROJECT_KEY > /tmp/sonar.json
+```
+
+Create JSON file from Codemaat:
+```
+git log --all --numstat --date=short --pretty=format:'--%h--%ad--%aN' --no-renames > /tmp/gitlog.txt
+java -jar ~/bin/code-maat.jar --log /tmp/gitlog.txt --version-control git2 --analysis revisions > /tmp/codemaat_revisions.csv
+ccsh codemaatimport /tmp/codemaat_revisions.csv > /tmp/codemaat_revisions.json
+```
+
+Merge two JSON files:
+```
+atom /tmp # sync project names manually
+ccsh merge /tmp/codemaat_revisions.json /tmp/sonar.json > /tmp/merged.json
+```
+
+Run visualization service:
+```
+docker run -p 80:8080 maibornwolff/codecharta-visualization
+```
+
 
 ## Code Maat
 
