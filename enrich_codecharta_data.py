@@ -2,10 +2,11 @@ import csv
 import json
 
 
-def get_source_code_data(file_name):
-    data = None
+def get_json_data(file_name):
     with open(file_name) as json_file:
-        data = json.load(json_file)
+        return json.load(json_file)
+
+def get_source_code_root(data):
     project_name = data['projectName']
     root_node = data['nodes'][0]
     if (":" in project_name):
@@ -45,7 +46,8 @@ def parse_codemaat_revisions_analysis(csv_reader):
 
 if __name__ == "__main__":
 
-    source_code_root = get_source_code_data('/tmp/sonar.json')
+    json_data = get_json_data('/tmp/sonar.json')
+    source_code_root = get_source_code_root(json_data)
 
     # Enrich data
     codemaat_analysis = parse_codemaat_results('/tmp/codemaat-revisions.txt')
@@ -57,4 +59,4 @@ if __name__ == "__main__":
 
     # Write out modified JSON file
     with open('/tmp/sonar.json', 'w') as outfile:
-        json.dump(data, outfile)
+        json.dump(json_data, outfile)
