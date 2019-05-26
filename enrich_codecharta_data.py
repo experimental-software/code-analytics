@@ -63,5 +63,5 @@ if __name__ == "__main__":
             file_attributes[analysis['attribute']] = analysis['value']
 
     # Write out modified JSON data
-    with open('/tmp/sonar.json', 'w') as outfile:
+    with open(args.sonar_json, 'w') as outfile:
         json.dump(json_data, outfile)
