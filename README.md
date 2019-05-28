@@ -1,5 +1,56 @@
 # Code Analysis Utilities
 
+## Usage
+
+```
+function sonar_list_projects() {
+    http GET http://localhost:9000/api/components/search?qualifiers=TRK
+}
+
+function sonar_import_via_gradle() {
+    ./gradlew sonarqube -Dsonar.host.url=http://localhost:9000
+}
+
+function sonar_export_json() {
+    if [[ -n $1 ]]; then
+        PROJECT_KEY=$1
+        ccsh sonarimport http://localhost:9000 $PROJECT_KEY > /tmp/sonar.json
+    else
+        echo "Please provide the PROJECT_KEY as parameter."
+    fi
+}
+
+function codemaat_export_gitlog() {
+    # --since="3 month"
+    git log --all --numstat --date=short --pretty=format:'--%h--%ad--%aN' --no-renames > /tmp/gitlog.txt
+}
+
+function codemaat_run_revisions_analyis() {
+    codemaat_run_analyis revisions
+}
+
+function codemaat_run_analyis() {
+    if [[ -n $1 ]]; then
+        ANALYSIS_NAME=$1
+
+        java -jar ~/bin/code-maat.jar --log /tmp/gitlog.txt --version-control git2 \
+        --analysis ${ANALYSIS_NAME} > /tmp/codemaat_analysis.txt
+
+        cat /tmp/codemaat_analysis.txt
+    else
+        echo "Please provide the ANALYSIS_NAME as parameter. See https://github.com/experimental-software/code-analytics/wiki/CodeMaat#available-analysis-options"
+    fi
+}
+
+function codemaat_enrich_sonar_json() {
+    python ~/src/experimental-software/code-analytics/enrich_codecharta_data.py --sonar-json /tmp/sonar.json \
+    --codemaat-csv /tmp/codemaat_analysis.txt
+
+    echo "$?"
+}
+```
+
+
 ## Development
 
 Run all unit tests:
