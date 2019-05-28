@@ -1,5 +1,12 @@
 # Code Analysis Utilities
 
+## Usage
+
+```
+python enrich_codecharta_data.py --sonar-json /tmp/sonar.json \
+    --codemaat-csv /tmp/codemaat-revisions.txt
+```
+
 ## Development
 
 Run all unit tests:
