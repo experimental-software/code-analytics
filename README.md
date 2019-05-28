@@ -12,8 +12,12 @@ function sonar_import_via_gradle() {
 }
 
 function sonar_export_json() {
-    PROJECT_KEY=$1
-    ccsh sonarimport http://localhost:9000 $PROJECT_KEY > /tmp/sonar.json
+    if [[ -n $1 ]]; then
+        PROJECT_KEY=$1
+        ccsh sonarimport http://localhost:9000 $PROJECT_KEY > /tmp/sonar.json
+    else
+        echo "Please provide the PROJECT_KEY as parameter."
+    fi
 }
 
 function codemaat_export_gitlog() {
@@ -39,7 +43,7 @@ function codemaat_run_analyis() {
 }
 
 function codemaat_enrich_sonar_json() {
-    python enrich_codecharta_data.py --sonar-json /tmp/sonar.json \
+    python ~/src/experimental-software/code-analytics/enrich_codecharta_data.py --sonar-json /tmp/sonar.json \
     --codemaat-csv /tmp/codemaat_analysis.txt
 
     echo "$?"
