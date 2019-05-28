@@ -2,15 +2,6 @@
 
 ## Usage
 
-### Enrich Sonar JSON
-
-```
-python enrich_codecharta_data.py --sonar-json /tmp/sonar.json \
-    --codemaat-csv /tmp/codemaat-revisions.txt
-```
-
-### Bash profile helper functions
-
 ```
 function sonar_list_projects() {
     http GET http://localhost:9000/api/components/search?qualifiers=TRK
