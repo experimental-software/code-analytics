@@ -9,10 +9,23 @@ def get_json_data(file_name):
 def get_source_code_root(data):
     project_name = data['projectName']
     root_node = data['nodes'][0]
-    if (":" in project_name):
-        return root_node['children'][0]['children'][0]
+
+    project_parts = 1
+    project_parts += project_name.count(':')
+    project_parts += project_name.count('/')
+
+    source_code_root = root_node
+    for i in range(project_parts):
+        source_code_root = source_code_root['children'][0]
+
+    return source_code_root
+
+def print_nodes(parent_node, path = ""):
+    if (len(parent_node['children']) > 0):
+        for child_node in parent_node['children']:
+            print_nodes(child_node, path + "/" + child_node['name'])
     else:
-        return root_node['children'][0]
+        print path
 
 def find_node(parent_node, path_elements):
     next_step = path_elements.pop(0)
