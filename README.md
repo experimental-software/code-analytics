@@ -39,11 +39,7 @@ function codemaat_export_gitlog() {
     git log --all --numstat --date=short --pretty=format:'--%h--%ad--%aN' --no-renames > /tmp/gitlog.txt
 }
 
-function codemaat_run_revisions_analyis() {
-    codemaat_run_analyis revisions
-}
-
-function codemaat_run_analyis() {
+function codemaat_analyis() {
     if [[ -n $1 ]]; then
         ANALYSIS_NAME=$1
 
