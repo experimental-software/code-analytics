@@ -1,7 +1,10 @@
 # Code Analysis Utilities
 
 ## Setup
+### General infrastructure
 - [Docker](https://docs.docker.com/install/)
+
+### Code analysis tools
 - [SonarCube](https://github.com/experimental-software/code-analytics/wiki/SonarCube#setup)
 - [CodeMaat](https://github.com/experimental-software/code-analytics/wiki/CodeMaat#setup)
 - [CodeCharta](https://github.com/experimental-software/code-analytics/wiki/CodeCharta#setup)
