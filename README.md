@@ -1,8 +1,22 @@
 # Code Analysis Utilities
 
+## Setup
+### General infrastructure
+- [Docker](https://docs.docker.com/install/)
+
+### Code analysis tools
+- [SonarCube](https://github.com/experimental-software/code-analytics/wiki/SonarCube#setup)
+- [CodeMaat](https://github.com/experimental-software/code-analytics/wiki/CodeMaat#setup)
+- [CodeCharta](https://github.com/experimental-software/code-analytics/wiki/CodeCharta#setup)
+
 ## Usage
 
 ```
+function sonar_start() {
+    docker run --env ES_JAVA_OPTS="-Xms750m -Xmx750m" -d -p 9000:9000 -p 9092:9092 \
+    sonarqube
+}
+
 function sonar_list_projects() {
     http GET http://localhost:9000/api/components/search?qualifiers=TRK
 }
@@ -25,11 +39,7 @@ function codemaat_export_gitlog() {
     git log --all --numstat --date=short --pretty=format:'--%h--%ad--%aN' --no-renames > /tmp/gitlog.txt
 }
 
-function codemaat_run_revisions_analyis() {
-    codemaat_run_analyis revisions
-}
-
-function codemaat_run_analyis() {
+function codemaat_analyis() {
     if [[ -n $1 ]]; then
         ANALYSIS_NAME=$1
 
