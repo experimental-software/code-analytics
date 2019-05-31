@@ -1,5 +1,11 @@
 # Code Analysis Utilities
 
+## Setup
+- [Docker](https://docs.docker.com/install/)
+- [SonarCube](https://github.com/experimental-software/code-analytics/wiki/SonarCube#setup)
+- [CodeMaat](https://github.com/experimental-software/code-analytics/wiki/CodeMaat#setup)
+- [CodeCharta](https://github.com/experimental-software/code-analytics/wiki/CodeCharta#setup)
+
 ## Usage
 
 ```
