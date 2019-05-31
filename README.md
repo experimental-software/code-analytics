@@ -3,6 +3,11 @@
 ## Usage
 
 ```
+function sonar_start() {
+    docker run --env ES_JAVA_OPTS="-Xms750m -Xmx750m" -d -p 9000:9000 -p 9092:9092 \
+    sonarqube
+}
+
 function sonar_list_projects() {
     http GET http://localhost:9000/api/components/search?qualifiers=TRK
 }
