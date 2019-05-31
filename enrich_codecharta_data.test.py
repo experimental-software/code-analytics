@@ -21,5 +21,14 @@ class EnrichCodechartaDataTest(unittest.TestCase):
 
         self.assertTrue(file_node)
 
+class CodeMaatParserTest(unittest.TestCase):
+
+    def test_parse_file_ownership(self):
+        codemaat_analysis = parse_codemaat_results('t/self_codemaat_main-dev.csv')
+        self.assertEqual(len(codemaat_analysis), 10)
+        for a in codemaat_analysis:
+            self.assertEqual(a['value'], 100)
+
+
 if __name__ == '__main__':
     unittest.main()

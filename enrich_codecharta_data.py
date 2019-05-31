@@ -40,10 +40,13 @@ def find_node(parent_node, path_elements):
 def parse_codemaat_results(csv_file):
     with open(csv_file) as f:
         csv_reader = csv.DictReader(f)
-        if (csv_reader.fieldnames == ['entity', 'n-revs']):
+        header = ",".join(csv_reader.fieldnames)
+        if (header == "entity,n-revs"):
             return parse_codemaat_revisions_analysis(csv_reader)
+        elif (header == "entity,main-dev,added,total-added,ownership"):
+            return parse_codemaat_main_dev_analyis(csv_reader)
         else:
-            raise Exception('Cannot parse CSV file with header: ' + ",".join(csv_reader.fieldnames))
+            raise Exception('Cannot parse CSV file with header: ' + header)
 
 def parse_codemaat_revisions_analysis(csv_reader):
     result = []
@@ -52,6 +55,17 @@ def parse_codemaat_revisions_analysis(csv_reader):
             'file_name': row['entity'],
             'attribute': 'n-revs',
             'value': row['n-revs']
+        }
+        result.append(analysis)
+    return result
+
+def parse_codemaat_main_dev_analyis(csv_reader):
+    result = []
+    for row in csv_reader:
+        analysis = {
+            'file_name': row['entity'],
+            'attribute': 'main-dev:' + row['main-dev'].replace(" ", "-"),
+            'value': float(row['ownership']) * 100
         }
         result.append(analysis)
     return result

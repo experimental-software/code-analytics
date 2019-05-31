@@ -1,0 +1,11 @@
+entity,main-dev,added,total-added,ownership
+LICENSE,Jan Mewes,674,674,1.0
+README.md,Jan Mewes,206,206,1.0
+amend-sonar-json.py,Jan Mewes,54,54,1.0
+codecharta-utils/amend-sonar-json.py,Jan Mewes,31,31,1.0
+codemaat-analysis-parser.py,Jan Mewes,25,25,1.0
+enrich-codecharta-data.py,Jan Mewes,54,54,1.0
+enrich_codecharta_data.py,Jan Mewes,94,94,1.0
+enrich_codecharta_data.test.py,Jan Mewes,27,27,1.0
+t/sonar-ksch.json,Jan Mewes,5404,5404,1.0
+t/sonar-wicket.json,Jan Mewes,238930,238930,1.0
