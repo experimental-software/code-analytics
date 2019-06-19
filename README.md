@@ -75,7 +75,11 @@ python *.test.py
 
 ## References
 
-- [Codecharta](https://maibornwolff.github.io/codecharta/)
+### Books
 - [Software Design X-Rays](https://pragprog.com/book/atevol/software-design-x-rays)
+- [Making Software - What Really Works, and Why We Believe It](https://books.google.de/books?id=DxuGi5h2-HEC)
+
+### Tools
+- [Codecharta](https://maibornwolff.github.io/codecharta/)
 - [SonarQube](https://www.sonarqube.org/)
 - [PyDriller](https://github.com/ishepard/pydriller)
